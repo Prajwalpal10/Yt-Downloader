@@ -9,7 +9,7 @@ export const fetchVideoInfo = async (url: string): Promise<VideoInfo> => {
     throw new Error('Invalid YouTube URL');
   }
 
-  const response = await fetch(`${URL}api/info`, {
+  const response = await fetch(`${URL}/api/info`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const fetchVideoInfo = async (url: string): Promise<VideoInfo> => {
 
 // ✅ NEW: Get available video qualities from Flask server
 export const getAvailableQualities = async (url: string): Promise<VideoQuality[]> => {
-  const response = await fetch(`${URL}api/formats`, {
+  const response = await fetch(`${URL}/api/formats`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export async function downloadVideo(
   quality: string,
   onProgress: (progress: number) => void
 ): Promise<Blob> {
-  const response = await fetch(`${URL}api/download`, {
+  const response = await fetch(`${URL}/api/download`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
